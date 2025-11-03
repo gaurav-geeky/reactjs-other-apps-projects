@@ -42,8 +42,6 @@ const TaskForm = ({addTask}) => {
                     </select>
                 </div>
 
-                <h1> all value of use : {task}, {priority}, {category} </h1>
-
             </form>
         </>
     )
