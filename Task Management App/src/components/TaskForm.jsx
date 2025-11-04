@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import '../style.css'
+
 
 const TaskForm = ({addTask}) => {
     const [task, settask] = useState('');
@@ -17,9 +19,9 @@ const TaskForm = ({addTask}) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className=''>
+            <form onSubmit={handleSubmit} className='task-form'>
 
-                <div className="inp">
+                <div id="inp">
                     <input type="text"
                         placeholder='Enter Your Task'
                         value={task}
