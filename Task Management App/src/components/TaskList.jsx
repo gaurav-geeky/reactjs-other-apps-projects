@@ -8,7 +8,6 @@ const TaskList = ({ tasks, updatetask, deletetask }) => {
         updatetask(updatedTask, index)
     } 
 
-
     return (
         <>
             <ul className='task-list'>

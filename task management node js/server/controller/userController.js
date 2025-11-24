@@ -3,7 +3,7 @@ import validator from "validator";
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "ur jwt secreat jere";
+const JWT_SECRET = process.env.JWT_SECRET || "ur jwt secret here";
 const TOKEN_EXPIRES = "24h";
 
 const createToken = (userID) => jwt.sign({ id: userID }, JWT_SECRET, { expiresIn: TOKEN_EXPIRES });
@@ -148,10 +148,6 @@ export async function updatePassword(req, res) {
     }
 
 }
-
-
-
-
 
 
 

@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import "./styles.css";
-import SuggestionsList from './suggestions-list';
-
+import SuggestionsList from './suggestions-list'; 
 // import debounce from "loadash/debounce"; 
+
 
 const Autocomplete = ({
     placeholder = "",
@@ -16,10 +16,14 @@ const Autocomplete = ({
     customStyles = {},
     datakey = "",
 }) => {
+    //                                               passed all prop in parameter
+
     const [inputValue, setInputValue] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    console.log(suggestions)
 
     const hanldeInputChange = (event) => {
         setInputValue(event.target.value);
@@ -39,17 +43,18 @@ const Autocomplete = ({
                 result = await fetchSuggestions(query);
             }
             setSuggestions(result)
-        } catch (error) {
+        }
+        catch (error) {
             setError("Failed to fetch suggestions..");
             setSuggestions([]);
-        } finally {
+        }
+        finally {
             setLoading(false);
         }
     };
 
     // const getSuggestionsDebounced = useCallback(
-    //     debounce(getSuggestions, 300), 
-    //     [] 
+    //     debounce(getSuggestions, 300),
     // );
 
     useEffect(() => {
@@ -61,13 +66,17 @@ const Autocomplete = ({
     }, [inputValue]);
 
     const handleSuggestionClick = (suggestion) => {
-        setInputValue(datakey? suggestion[datakey] : datakey); 
-        onSelect(suggestion); 
-        setSuggestions([]); 
-    }; 
+        setInputValue(datakey ? suggestion[datakey] : datakey);
+        onSelect(suggestion);
+        setSuggestions([]);
+    };
 
+
+    
+    //                                                           return
     return (
         <div className='container'>
+
             <input
                 type="text"
                 value={inputValue}
@@ -78,21 +87,21 @@ const Autocomplete = ({
                 onChange={hanldeInputChange}
             />
 
-
             {(suggestions.length > 0 || loading || error) && (
                 <ul className='suggestions-list'>
-                {error && <div className='error'>{error} </div>}
-                {loading && <div className='loading'>{customloading} </div>}
-                <SuggestionsList
-                    datakey={datakey}
-                    highlight={inputValue}
-                    suggestions={suggestions}
-                    onSuggestionClick={handleSuggestionClick}
-                />
-            </ul>
-        )}
+                    {error && <div className='error'>{error} </div>}
+                    {loading && <div className='loading'>{customloading} </div>}
+                    <SuggestionsList
+                        datakey={datakey}
+                        highlight={inputValue}
+                        suggestions={suggestions}
+                        onSuggestionClick={handleSuggestionClick}
+                    />
+                </ul>
+            )}
 
         </div>
+
     )
 }
 

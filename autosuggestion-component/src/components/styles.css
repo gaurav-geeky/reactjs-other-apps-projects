@@ -1,7 +1,8 @@
 .container {
     position: relative;
     width: 300px;
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; 
+    /* border: 1px solid black; */
 }
 
 .container>input {
@@ -27,7 +28,7 @@
 .suggestions-list {
     position: absolute;
     width: 100%;
-    border: 1px solud #ccc;
+    border: 1px solid #ccc;
     border-top: none;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);

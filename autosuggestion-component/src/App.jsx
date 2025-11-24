@@ -20,28 +20,28 @@ function App() {
 
   const fetchSuggestions = async (query) => {
     const response = await fetch(
-      `https://dummyjson.com/recipes/search?q=${query}`
+      `https://dummyjson.com/recipes/search?q=${query}`   //       API call
     );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
     const result = await response.json();
-    return result.recipes;
+    return result.recipes;  // recipes which contain all the data. 
   }
 
   return (
     <>
 
       <h1> Autocomplete / Typehead </h1>
-      
+
       <Autocomplete
         placeholder={"Enter Recipe"}
         // staticData= {staticData}  
-        fetchSuggestions={fetchSuggestions}
-        datakey={"name"}
-        customLoading={<>Loading Recipees.. </>}
-        onSelect={(res) => console.log(res)}
-        onChange={(input) => { }}
+        fetchSuggestions={fetchSuggestions}  // to fetch something
+        datakey={"name"}  // what we acutally suppose to search
+        customLoading={<>Loading Recipees.. </>}  // 
+        onSelect={(res) => console.log(res)}   // what happen when that option is selected
+        onChange={(input) => { }}  // it is input value
         onBlur={(e) => { }}
         onFocus={(e) => { }}
         customStyles={{}}
@@ -52,3 +52,6 @@ function App() {
 }
 
 export default App
+
+
+
